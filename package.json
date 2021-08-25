@@ -5,13 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@types/cxs": "^6.2.1",
     "core-js": "^3.6.5",
     "cxs": "^6.2.0",
     "echarts": "^5.1.2",
+    "gh-pages": "^3.2.3",
     "throttle-debounce": "^3.0.1",
     "vue": "^3.0.0",
     "vue-draggable-next": "^2.0.1",
@@ -73,5 +75,6 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "homepage": "https://JarryChung.github.io/Task-V3"
 }
