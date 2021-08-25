@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import TaskBoard from './views/task-board/Main.vue';
+import StatisticsView from './views/StatisticsView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/statistics-view',
     name: 'StatisticsView',
-    component: () => import(/* webpackChunkName: "statistics-view" */ './views/StatisticsView.vue')
+    component: StatisticsView
   }
 ];
 
