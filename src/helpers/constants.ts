@@ -1,0 +1,9 @@
+export const TASK_TYPE = {
+  UNCATEGORIZED: 0,
+  IMPORTANT_URGENT: 1,
+  NOT_IMPORTANT_URGENT: 2,
+  IMPORTANT_NOT_URGENT: 3,
+  NOT_IMPORTANT_NOT_URGENT: 4
+};
+
+export const TASK_CACHE_KEY = 'tasks_cache';
