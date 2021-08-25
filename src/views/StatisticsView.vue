@@ -1,7 +1,7 @@
 <template>
   <div class="statistics-view">
     <div class="time">{{ time }}</div>
-    <div id="chart" ref="chart" class="chart" />
+    <div id="chart" ref="chart" class="chart"> </div>
   </div>
 </template>
 
