@@ -2,7 +2,7 @@
 const path = require('path');
 
 module.exports = {
-  publicPath: './',
+  publicPath: process.env.NODE_ENV === 'production' ? '/Task-V3' : '/',
 
   chainWebpack: config => {
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal'];
