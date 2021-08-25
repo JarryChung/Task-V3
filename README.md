@@ -1,13 +1,17 @@
 # Task-V3
 
 > 使用 vue3 与 ts 构建的四象限工作法辅助 app
+>
 > 涵盖多种写法，详见代码说明部分
+
+[DEMO](https://jarrychung.github.io/Task-V3/)
 
 ## 开发
 
 - 安装依赖 `yarn install`
 - 运行服务 `yarn serve`
 - 构建产物 `yarn build`
+- 发布 `yarn deploy`
 - lint `yarn lint`
 
 ## 代码说明
