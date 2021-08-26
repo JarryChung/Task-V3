@@ -1,7 +1,7 @@
 <template>
   <div class="statistics-view">
     <div class="time">{{ time }}</div>
-    <div id="chart" ref="chart" class="chart"> </div>
+    <div id="chart" class="chart"> </div>
   </div>
 </template>
 
@@ -24,24 +24,10 @@ const getChartData = (tasks: Task[]) => {
   return chartData;
 }
 
-/** 在 setup script 中，创建 vnode 的变量需放在顶层
- * 打包后的代码为：
- * return (_ctx: any,_cache: any) => {
- *  return (_openBlock(), _createElementBlock("div", _hoisted_1, [
- *    _createElementVNode("div", _hoisted_2, _toDisplayString(time.value), 1),
- *    _createElementVNode("div", {
- *      id: "chart",
- *      ref: chart,
- *      class: "chart"
- *    }, null, 512)
- *  ]))
- * }
-*/
-let chart: echarts.ECharts;
 const initChart = (chartData: { value: number, name: string }[]) => {
   const targetElement = document.getElementById('chart');
   if (targetElement) {
-    chart = echarts.init(targetElement);
+    const chart: echarts.ECharts = echarts.init(targetElement);
     chart.setOption({
       legend: {
         top: 'bottom'
