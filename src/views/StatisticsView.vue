@@ -1,16 +1,16 @@
 <template>
   <div class="statistics-view">
     <div class="time">{{ time }}</div>
-    <div id="chart" class="chart"> </div>
+    <div id="chart" class="chart"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, onBeforeMount, ref } from 'vue';
 import * as echarts from 'echarts';
-import { tasks, Task } from '@/assets/json/tasks'
-import { taskCategoryTitle } from './task-board/Main.vue'
-import { TASK_CACHE_KEY } from '@/helpers/constants'
+import { tasks, Task } from '@/assets/json/tasks';
+import { taskCategoryTitle } from './task-board/Main.vue';
+import { TASK_CACHE_KEY } from '@/helpers/constants';
 
 const getChartData = (tasks: Task[]) => {
   const nameMap: { [prop: number]: number } = {};
@@ -19,16 +19,17 @@ const getChartData = (tasks: Task[]) => {
       nameMap[task.type] = 0;
     }
     nameMap[task.type] += 1;
-  })
-  const chartData = Object.entries(nameMap).map(([name, value]) => ({ value, name: taskCategoryTitle[+name] }))
+  });
+  const chartData = Object.entries(nameMap).map(([name, value]) => ({ value, name: taskCategoryTitle[+name] }));
   return chartData;
-}
+};
 
-const initChart = (chartData: { value: number, name: string }[]) => {
+let chartInstance: echarts.ECharts;
+const initChart = (chartData: { value: number; name: string }[]) => {
   const targetElement = document.getElementById('chart');
   if (targetElement) {
-    const chart: echarts.ECharts = echarts.init(targetElement);
-    chart.setOption({
+    chartInstance = echarts.init(targetElement);
+    chartInstance.setOption({
       legend: {
         top: 'bottom'
       },
@@ -60,7 +61,7 @@ const initChart = (chartData: { value: number, name: string }[]) => {
       ]
     });
   }
-}
+};
 
 onMounted(() => {
   const cache = localStorage.getItem(TASK_CACHE_KEY);
@@ -68,7 +69,12 @@ onMounted(() => {
 
   const chartData = getChartData(taskList);
   initChart(chartData);
-})
+});
+
+onBeforeMount(() => {
+  // 需手动销毁 echarts 实例，否则路由切换后二次渲染失败
+  chartInstance.dispose();
+});
 
 const time = ref(new Date().toString());
 setInterval(() => {
@@ -77,11 +83,14 @@ setInterval(() => {
 </script>
 
 <style lang="less" scoped>
-.time {
-  text-align: center;
-}
-.chart {
-  width: 100vw;
-  height: 88vh;
+.statistics-view {
+  .time {
+    text-align: center;
+  }
+  .chart {
+    text-align: center;
+    width: 99vw;
+    height: 88vh;
+  }
 }
 </style>

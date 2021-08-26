@@ -5,6 +5,19 @@
 > 涵盖多种写法，详见代码说明部分
 
 [DEMO](https://jarrychung.github.io/Task-V3/)
+<video
+  width="666"
+  controls
+  muted
+  loop
+  preload="none"
+  poster="https://user-images.githubusercontent.com/35088591/130968673-5add9925-3985-4002-a603-c57fcd102205.png"
+>
+  <source
+    src="https://user-images.githubusercontent.com/35088591/130968680-95d4c620-ea26-4f01-b885-2ec25af584fe.mov"
+    type="video/mp4"
+  />
+</video>
 
 ## 开发
 
