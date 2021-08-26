@@ -24,11 +24,10 @@ const getChartData = (tasks: Task[]) => {
   return chartData;
 };
 
-let chartInstance: echarts.ECharts;
 const initChart = (chartData: { value: number; name: string }[]) => {
   const targetElement = document.getElementById('chart');
   if (targetElement) {
-    chartInstance = echarts.init(targetElement);
+    const chartInstance: echarts.ECharts = echarts.init(targetElement);
     chartInstance.setOption({
       legend: {
         top: 'bottom'
@@ -73,7 +72,9 @@ onMounted(() => {
 
 onBeforeMount(() => {
   // 需手动销毁 echarts 实例，否则路由切换后二次渲染失败
-  chartInstance.dispose();
+  // chartInstance.dispose(); 此种方式部署后拿不到 chartInstance
+  const chartElement = document.getElementById('chart');
+  chartElement && chartElement.removeAttribute('_echarts_instance_');
 });
 
 const time = ref(new Date().toString());
